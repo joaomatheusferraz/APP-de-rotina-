@@ -1,0 +1,393 @@
+PRD • PRODUCT REQUIREMENTS DOCUMENT
+Sistema Pessoal de Rotina,Hábitos, Foco e Treinos
+Especificação para desenvolvimento com Codex
+Versão 1.1 • Setembro de 2026
+
+Visão: criar um aplicativo Android pessoal que funcione como uma central diária de vida, unindo hábitos, tarefas, compromissos, foco, metas, treino e evolução corporal, com arquitetura preparada para futura integração com IA.
+
+1. Visão do produto
+O aplicativo não deve ser tratado como um simples app de academia. Ele será um sistema pessoal de organização e acompanhamento diário, inspirado em princípios de construção de hábitos e na experiência visual de um dashboard pessoal, porém com uso mais rápido e natural no celular.
+A tela principal deve responder imediatamente a três perguntas: o que preciso fazer hoje, o que já concluí e o que vem depois. O usuário deve conseguir marcar ações em poucos toques, enquanto o sistema mantém automaticamente o histórico.
+2. Princípios do produto
+O app é dono dos dados; futuras IAs apenas consultam ou propõem alterações.
+Tudo que muda na vida do usuário deve ser configurável no próprio app, sem alterar código.
+Descanso programado não é falha e não deve quebrar sequências.
+Reset diário da interface nunca apaga histórico.
+Consistência é mais importante do que perfeição: mostrar percentuais, frequência e histórico além de streaks.
+Ações de IA que alterem dados deverão exigir confirmação explícita.
+A experiência principal deve funcionar offline.
+O MVP deve ser simples, rápido e confiável antes de receber recursos avançados.
+3. Escopo do MVP
+Módulo
+No MVP
+Objetivo
+Hoje
+Sim
+Dashboard diário com hábitos, tarefas, eventos, treino e progresso.
+Hábitos
+Sim
+Hábitos recorrentes, histórico, consistência e streaks.
+Tarefas
+Sim
+Ações pontuais com prazo, prioridade e conclusão.
+Compromissos
+Sim
+Eventos com data/hora e integração opcional ao calendário Android.
+Metas
+Sim
+Metas com progresso; Projeto 80 kg como primeira meta real.
+Treino
+Sim
+Planos, exercícios, séries, cargas, histórico e recordes.
+Foco
+Sim
+Timer de estudo/trabalho e histórico de sessões.
+Evolução
+Sim
+Peso, medidas, fotos opcionais e gráficos.
+Backup/exportação
+Sim
+Evitar perda e aprisionamento dos dados.
+IA/GPT
+Preparado
+Arquitetura pronta, integração completa em fase posterior.
+Widgets Android
+Depois
+Resumo diário na tela inicial.
+4. Navegação principal
+Sugestão de barra inferior com cinco destinos principais: Hoje, Rotina, Treino, Evolução e Perfil. Metas, Foco, Calendário e demais funções podem ser acessadas a partir dessas áreas e por um botão global de adicionar.
+Hoje — visão operacional do dia.
+Rotina — hábitos, tarefas, calendário, foco e histórico.
+Treino — plano atual, execução, exercícios, cargas e histórico.
+Evolução — peso, medidas, fotos, gráficos e estatísticas.
+Perfil — áreas da vida, preferências, backup, notificações e configurações.
+5. Tela Hoje
+É a tela mais importante. Deve abrir rapidamente e apresentar somente o que é relevante para o dia atual.
+Saudação, data e resumo do dia.
+Barra de progresso diário, por exemplo 8 de 11 concluídos.
+Hábitos recorrentes com checkbox; concluído fica visualmente verde.
+Tarefas do dia.
+Sessões de foco planejadas.
+Compromissos com horário.
+Treino programado, quando existir.
+Botão + global para adicionar rapidamente qualquer item.
+Itens concluídos continuam visíveis de forma discreta ou podem ser recolhidos.
+6. Sistema de hábitos
+Um hábito é uma ação recorrente. Exemplo inicial: tomar creatina. Ao virar o dia, a caixa volta a ficar desmarcada quando o hábito estiver programado para aquele dia, mas a conclusão anterior permanece no histórico.
+Frequência: diariamente, dias específicos da semana ou X vezes por semana.
+Horário opcional e lembrete opcional.
+Categoria/área da vida.
+Data de início e possibilidade de pausar/arquivar.
+Histórico por calendário.
+Consistência de 7, 30 e 90 dias e por mês.
+Streak atual e melhor streak, quando fizer sentido.
+Notas opcionais em uma conclusão.
+7. Regra de streak 🔥
+O streak deve considerar apenas oportunidades programadas. Dias de descanso, dias não configurados e hábitos pausados não quebram a sequência.
+Exemplo academia: segunda, terça, quarta e sexta são treinos; quinta, sábado e domingo são descanso.
+Treino realizado em dia programado: incrementa a sequência.
+Dia de descanso: mantém a sequência sem incrementar.
+Dia programado perdido: encerra a sequência após o dia terminar.
+Treino futuro ainda não realizado: não quebra antecipadamente a sequência.
+Para academia, o texto preferido é 'X treinos programados consecutivos cumpridos', não 'X dias'.
+Exibir também percentual de consistência semanal/mensal para evitar dependência excessiva do streak.
+8. Tarefas, compromissos e metas
+8.1 Tarefas
+Pontuais e concluíveis; não reaparecem automaticamente.
+Título, descrição opcional, prazo, prioridade, área e lembrete.
+Podem estar ligadas a uma meta.
+8.2 Compromissos
+Título, data, hora, duração, local/nota e lembrete.
+Exemplo: Dentista às 16:30.
+Calendário interno do app.
+Opção explícita para adicionar/sincronizar com o calendário do Android, respeitando permissões.
+8.3 Metas
+Título, descrição, data inicial, prazo opcional, unidade de progresso e valor-alvo.
+Podem agrupar hábitos, tarefas e registros.
+Ao serem concluídas, ficam arquivadas sem apagar histórico.
+Primeira meta real: Projeto 80 kg.
+9. Projeto 80 kg
+O Projeto 80 kg deve existir como uma meta, não como identidade permanente do aplicativo. O registro atual para inicialização do sistema é 62 kg e a meta é 80 kg.
+Mostrar peso atual, peso inicial configurado, meta e progresso.
+Histórico de pesagens com data e horário.
+Medidas corporais com histórico independente.
+Fotos de evolução opcionais e privadas no dispositivo.
+Relacionar hábitos como creatina, alimentação e treino à meta.
+Ao atingir a meta, permitir concluir/arquivar o Projeto 80 kg e criar uma nova meta sem perder nenhum dado.
+10. Módulo de treino
+O treino deve ser um subsistema mais estruturado que os hábitos comuns. O usuário pode criar e versionar planos.
+Plano de treino atual com dias programados e dias de descanso.
+Sessões compostas por exercícios.
+Exercício: nome, grupo muscular, observações e ordem.
+Séries: alvo de repetições, carga, repetições realizadas e conclusão.
+Cronômetro de descanso opcional após concluir uma série.
+Mostrar carga/repetições da última execução.
+Histórico por exercício e recordes pessoais.
+Tempo total do treino e volume calculado quando aplicável.
+Permitir alterar um plano criando nova versão em vez de sobrescrever o histórico.
+Planos antigos permanecem consultáveis.
+11. Periodização
+O sistema deve suportar ciclos configuráveis. Como configuração inicial, deve ser possível representar 2 semanas de hipertrofia, 2 semanas de força e 1 semana de deload, mas isso não pode ficar fixo no código.
+Cada fase pode definir faixas de repetições, séries e observações.
+O app identifica a fase atual do ciclo.
+O usuário pode iniciar, pausar, reiniciar ou trocar a periodização.
+Mudanças futuras devem preservar o histórico da fase em que cada treino ocorreu.
+12. Modo Foco
+Criar sessão com nome, categoria e duração-alvo.
+Timer com iniciar, pausar, retomar e encerrar.
+Registrar duração real.
+Avaliação opcional da sessão e nota curta.
+Estatísticas por categoria, semana e mês.
+Categorias configuráveis, por exemplo Faculdade, C#, POO e Engenharia de Dados.
+13. Áreas da vida
+O usuário pode criar áreas para organizar itens sem engessar o aplicativo. Exemplos iniciais: Saúde, Estudos, Trabalho, Financeiro e Pessoal.
+Hábitos, tarefas, metas, foco e eventos podem pertencer a uma área.
+Áreas podem ser criadas, renomeadas, reordenadas, ocultadas ou arquivadas.
+Relatórios podem mostrar consistência por área.
+14. Botão global +
+O botão de adicionar deve estar acessível nas principais telas e oferecer:
+Hábito
+Tarefa
+Compromisso
+Meta
+Sessão de foco
+Treino/plano
+Peso ou medida corporal
+Nota rápida/diário
+15. Notificações
+Notificações locais para hábitos, tarefas, eventos, foco e treino.
+Cada item decide se terá lembrete.
+Permitir antecedência configurável.
+Evitar notificações redundantes.
+Respeitar permissões e configurações do Android.
+16. Diário/notas rápidas
+Recurso simples para registrar contexto que números não capturam, como 'dormi mal', 'treino excelente' ou 'dia muito corrido'. Deve ser opcional e pesquisável por data. Futuramente poderá fornecer contexto à IA.
+17. Evolução e relatórios
+Gráfico de peso ao longo do tempo.
+Histórico de medidas corporais.
+Frequência e consistência de hábitos.
+Treinos planejados versus realizados.
+Evolução de carga/repetições por exercício.
+Tempo de foco por categoria.
+Resumo semanal e mensal.
+Relatório por área da vida.
+18. Modelo conceitual de dados
+Entidades sugeridas; o Codex pode refiná-las sem alterar as regras de negócio:
+Entidade
+Responsabilidade
+UserProfile
+preferências gerais e perfil local
+LifeArea
+áreas da vida
+Habit
+definição do hábito
+HabitSchedule
+frequência/programação
+HabitCompletion
+conclusão histórica por ocorrência
+Task
+tarefa pontual
+CalendarEvent
+compromisso
+Goal
+meta
+GoalLink
+liga metas a hábitos/tarefas/registros
+FocusSession
+sessão de foco
+WorkoutPlan
+plano versionado
+WorkoutDay
+sessão planejada dentro do plano
+Exercise
+catálogo de exercícios
+WorkoutExercise
+exercício dentro de uma sessão
+WorkoutSession
+execução real
+ExerciseSet
+série realizada
+BodyWeightRecord
+pesagem
+BodyMeasurement
+medida corporal
+ProgressPhoto
+referência local para foto
+JournalEntry
+nota/diário
+Reminder
+configuração de lembrete
+19. Regras de integridade dos dados
+Nunca apagar histórico ao editar um plano ou hábito; preferir arquivar/versionar quando necessário.
+Conclusões diárias devem ser registros separados da definição do hábito.
+Peso e medidas são registros temporais, nunca campos sobrescritos.
+Planos de treino devem possuir versão/período de validade.
+Datas devem ser armazenadas de forma consistente e exibidas no fuso local.
+Alterações destrutivas devem pedir confirmação.
+O aplicativo deve continuar útil sem conexão com internet.
+20. Backup, exportação e privacidade
+Exportação manual dos dados em formato legível e estruturado.
+Backup local desde o MVP; sincronização em nuvem pode ser fase posterior.
+Importação/restauração deve ser planejada junto com exportação.
+Fotos e informações corporais devem permanecer privadas e sob controle do usuário.
+Nenhuma chave secreta de API deve ser embutida no APK.
+21. Preparação para IA
+A V1 não precisa depender de IA. Entretanto, serviços e repositórios devem ser organizados para que uma camada futura possa consultar dados com ferramentas bem definidas.
+Exemplos de ferramentas futuras: get_current_weight, get_weight_history, get_current_workout, get_workout_history, get_exercise_progress, get_habit_history, get_goal, get_measurements e get_focus_statistics.
+A IA recebe somente os dados necessários à solicitação.
+A IA pode sugerir alterações, mas ações de escrita exigem tela de confirmação.
+Exemplo: 'Adicionar hábito Estudar SQL de segunda a sexta por 30 min' gera uma proposta; só é gravada após confirmar.
+Integração com API deve usar backend seguro ou outra solução que mantenha segredos fora do APK.
+22. Tecnologia sugerida
+A escolha final pode ser validada pelo Codex conforme o ambiente, mas uma opção coerente com o objetivo de aprendizado é:
+Android-first.
+.NET MAUI com C# para aplicação.
+SQLite para persistência local.
+Camadas separadas: UI, domínio/regras, serviços e persistência.
+MVVM para organização da interface e estado.
+Serviços abstratos para calendário, notificações, backup e futura IA.
+Testes unitários para regras críticas, principalmente streaks, recorrência e versionamento.
+23. Direção visual
+Visual moderno, limpo e pessoal; evitar aparência de sistema corporativo.
+Dashboard com cartões, boa hierarquia e poucos elementos por tela.
+Modo claro e escuro.
+Verde pode indicar conclusão; cores de categorias devem ser configuráveis.
+Animações discretas ao concluir hábitos/séries.
+Acessibilidade: contraste, alvos de toque adequados e suporte a tamanho de fonte.
+O visual final deverá ser refinado com base nos prints do Notion do usuário.
+24. O que NÃO fazer no MVP
+Não criar rede social.
+Não criar sistema complexo de contas antes de existir necessidade.
+Não exigir internet para usar a rotina.
+Não implementar IA antes do núcleo do app estar estável.
+Não fixar hábitos, horários, treino ou categorias diretamente no código.
+Não sobrescrever históricos ao editar configurações.
+Não transformar a tela Hoje em um dashboard excessivamente carregado.
+25. Critérios de aceite principais
+O usuário consegue criar um hábito diário, marcá-lo e vê-lo resetado visualmente no dia seguinte sem perder o histórico.
+Um dia de descanso programado não quebra streak de academia.
+O usuário consegue criar tarefa, evento e meta e distingui-los claramente.
+O usuário consegue registrar peso e visualizar evolução temporal.
+O usuário consegue criar um plano de treino, executar séries e consultar a execução anterior.
+Editar/trocar plano de treino preserva o plano e as sessões antigas.
+O modo foco registra duração real e gera estatísticas.
+O calendário interno exibe compromissos e existe caminho opcional para calendário Android.
+O app funciona offline para as funções centrais.
+Existe exportação/backup dos dados.
+A arquitetura permite adicionar IA futuramente sem reescrever o domínio.
+26. Ordem recomendada de implementação com Codex
+Criar projeto, arquitetura, tema, navegação e banco local.
+Implementar áreas, hábitos, recorrência, conclusão diária e regra de streak.
+Construir tela Hoje e botão global +.
+Adicionar tarefas, compromissos e calendário.
+Adicionar metas e Projeto 80 kg.
+Adicionar peso, medidas e gráficos básicos.
+Implementar planos de treino, execução, séries, histórico e versionamento.
+Adicionar periodização configurável.
+Implementar modo foco e estatísticas.
+Adicionar notificações.
+Adicionar diário/notas.
+Implementar exportação, backup e restauração.
+Criar testes e revisar UX.
+Somente depois avaliar backend e integração GPT/IA.
+27. Dados iniciais para seed opcional
+Esses dados podem ser oferecidos como configuração inicial editável, nunca como constantes obrigatórias.
+Peso atual: 62 kg.
+Meta ativa: Projeto 80 kg — alvo 80 kg.
+Hábito: Tomar creatina — todos os dias.
+Área: Saúde.
+Áreas sugeridas adicionais: Estudos, Trabalho, Financeiro e Pessoal.
+Periodização sugerida: 2 semanas hipertrofia + 2 semanas força + 1 semana deload.
+28. Próxima etapa antes do código
+Usar este PRD como documento mestre. Antes de pedir ao Codex que implemente todas as telas, fornecer prints do Notion que serviu de referência visual. A partir deles, definir wireframes e um pequeno design system. Em seguida, entregar ao Codex a implementação em etapas, exigindo que cada etapa compile, tenha testes das regras críticas e não quebre funcionalidades anteriores.
+29. Instrução de alto nível para o Codex
+Trate este PRD como a fonte de verdade do produto. Não invente regras que contradigam o documento. Quando houver ambiguidade de UX ou regra de negócio, apresente a decisão necessária antes de implementar. Priorize arquitetura sustentável, dados locais confiáveis, preservação de histórico e código legível. Implemente por fases pequenas e verificáveis; não tente entregar todo o produto em uma única alteração.
+
+30. Referência visual do Notion e identidade do app
+Os prints do Notion enviados pelo usuário passam a ser referência funcional e visual do produto. O objetivo não é copiar o Notion literalmente, mas preservar a sensação de painel pessoal: tema escuro, blocos bem separados, imagens motivacionais, visão anual/mensal, checklists rápidos, calendário e áreas de progresso.
+Priorizar tema escuro elegante, com cartões, tipografia forte e bastante espaço visual.
+Permitir imagens de capa e elementos motivacionais sem comprometer a velocidade da tela Hoje.
+Manter a interface mobile-first: tabelas largas do Notion devem virar cartões, listas, gráficos e telas de detalhe.
+O usuário deve conseguir personalizar quais cartões e métricas aparecem no painel principal.
+31. Quadro dos Sonhos
+Adicionar um módulo visual chamado Quadro dos Sonhos. Ele funciona como um mural de imagens escolhidas pelo usuário para representar objetivos, experiências e estilos de vida desejados.
+Adicionar imagens da galeria do telefone.
+Título e descrição opcionais para cada imagem.
+Categoria/área opcional.
+Reordenar e redimensionar cartões dentro de layouts suportados.
+Abrir imagem em tela cheia.
+Vincular opcionalmente uma imagem a uma Meta ou item do Plano de Ação.
+O mural deve funcionar offline; imagens permanecem sob controle do usuário.
+Não exigir que todo sonho tenha meta mensurável: vínculos são opcionais.
+32. Plano de Ação / Kanban
+Adicionar uma visão Kanban inspirada no Plano de Ação do Notion. Ela organiza projetos e objetivos acionáveis por estado.
+Estados iniciais: Começar, Em progresso e Concluídas.
+Permitir mover cartões entre colunas por gesto/ação apropriada no celular.
+Cada cartão pode ter título, descrição, tags, área da vida, prazo e vínculo com uma Meta.
+Projeto 80 kg pode aparecer como cartão em progresso, mas sua fonte de verdade continua sendo o módulo de Meta/Treino/Evolução.
+Estados e categorias devem ser configuráveis futuramente; evitar hard-code desnecessário.
+33. Check-in diário e fechamento do dia
+O sistema deve registrar contexto diário além dos checkboxes. Esses dados enriquecem os relatórios e futuramente podem ser usados pela IA para identificar relações sem assumir causalidade.
+Horário em que acordou.
+Sono: duração e avaliação subjetiva opcional.
+Humor: escala simples configurável.
+Água: meta diária e consumo acumulado com botões rápidos, por exemplo +250 ml e +500 ml.
+Tempo de celular: registro manual no MVP; integração automática pode ser estudada posteriormente conforme permissões do Android.
+Nota curta sobre o dia.
+Tela opcional de Fechar o Dia mostrando hábitos concluídos, treino, foco, água e avaliação geral.
+34. Dashboard e gráficos de evolução
+Neste produto, Dashboard significa o painel de acompanhamento do progresso. Ele reúne métricas e gráficos; não é apenas um gráfico isolado. Deve existir uma área principal chamada Progresso com filtros por período e categoria.
+Consistência geral no período e comparação com período anterior.
+Lista de hábitos com realizados/programados e percentual de consistência.
+Gráfico temporal da consistência semanal/mensal.
+Mapa de calor estilo calendário/GitHub para visualizar padrões de execução.
+Streak atual e melhor streak quando aplicável.
+Dashboard individual de cada hábito.
+Dashboards separados para Hábitos, Corpo, Treino, Foco/Estudos e Metas.
+Dias sem atividade programada devem ser visualmente distintos de falhas.
+35. Dashboard individual por hábito
+Nome e configuração do hábito.
+Consistência nos últimos 7, 30 e 90 dias.
+Realizados versus programados.
+Calendário mensal de conclusões.
+Evolução por semana/mês.
+Streak atual e recorde.
+Histórico de notas relacionadas ao hábito, quando existirem.
+36. Dashboard de treino e Projeto 80 kg
+Peso corporal ao longo do tempo e progresso até 80 kg.
+Frequência de treino: planejados, realizados, perdidos e descansos.
+Evolução de carga e repetições por exercício.
+Volume de treino quando os dados permitirem cálculo confiável.
+Recordes pessoais e histórico de sessões.
+Correlação visual opcional entre períodos de treino e peso, sem afirmar causalidade.
+37. Dashboard configurável
+A tela Hoje e/ou a área Progresso devem permitir personalização dos cartões exibidos. O usuário pode mostrar, ocultar e reordenar cartões como Peso, Projeto 80 kg, Água, Foco, Próximo compromisso, Streak e hábitos pendentes.
+Configuração deve persistir localmente.
+Oferecer um layout padrão bom para primeira execução.
+Personalização não pode alterar ou apagar os dados de origem.
+Evitar excesso de informação: cartões resumidos abrem telas detalhadas.
+38. Navegação revisada
+Barra inferior recomendada para a primeira versão: Hoje | Rotina | Treino | Progresso | Perfil. Quadro dos Sonhos, Plano de Ação, Calendário, Metas e Foco ficam acessíveis a partir de Rotina/Perfil e por atalhos configuráveis.
+39. Critérios de aceite adicionais - v1.1
+O usuário consegue adicionar, remover e reorganizar imagens no Quadro dos Sonhos.
+Uma imagem do Quadro dos Sonhos pode ser vinculada opcionalmente a uma Meta.
+O Plano de Ação permite mover um cartão entre Começar, Em progresso e Concluídas sem perder histórico relevante.
+O check-in diário registra pelo menos humor, sono, água e horário de acordar de forma opcional.
+O consumo de água pode ser incrementado rapidamente e comparado à meta diária.
+A área Progresso mostra consistência dos hábitos por período e diferencia descanso/sem programação de falha.
+Cada hábito possui tela de detalhes com histórico e gráfico/visualização de consistência.
+O dashboard pode ser personalizado sem apagar os dados dos módulos.
+40. Ordem de implementação revisada
+Fundação: arquitetura, banco local, tema, navegação e testes.
+Áreas, hábitos, recorrência, conclusões e streaks.
+Tela Hoje, check-in diário, água e fechamento do dia.
+Tarefas, compromissos, calendário e notificações.
+Metas, Plano de Ação/Kanban e Projeto 80 kg.
+Peso, medidas, dashboards e gráficos de evolução.
+Treinos, séries, cargas, histórico, versionamento e periodização.
+Modo Foco e estatísticas.
+Quadro dos Sonhos e vínculos com metas.
+Dashboard configurável e refinamento visual baseado no Notion.
+Backup, exportação, restauração e revisão de privacidade.
+Somente após o núcleo estar estável: backend e integração com IA.
+FIM DO PRD • V1.1

@@ -1,0 +1,24 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net9.0-android</TargetFramework>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>Rotina.Mobile</RootNamespace>
+    <UseMaui>true</UseMaui>
+    <SingleProject>true</SingleProject>
+    <ApplicationTitle>Rotina</ApplicationTitle>
+    <ApplicationId>br.pessoal.rotina</ApplicationId>
+    <ApplicationDisplayVersion>1.3.0</ApplicationDisplayVersion>
+    <ApplicationVersion>16</ApplicationVersion>
+    <SupportedOSPlatformVersion>23.0</SupportedOSPlatformVersion>
+    <MauiVersion>9.0.120</MauiVersion>
+    <EmbedAssembliesIntoApk>true</EmbedAssembliesIntoApk>
+  </PropertyGroup>
+  <ItemGroup>
+    <MauiIcon Include="Resources/AppIcon/appicon.svg" Color="#101816" />
+    <MauiSplashScreen Include="Resources/Splash/splash.svg" Color="#101816" BaseSize="128,128" />
+    <MauiImage Include="Resources/Images/nav_*.svg" />
+    <MauiFont Include="Resources/Fonts/*" />
+    <PackageReference Include="Microsoft.Maui.Controls" Version="$(MauiVersion)" />
+    <ProjectReference Include="../Rotina.Infrastructure/Rotina.Infrastructure.csproj" />
+  </ItemGroup>
+</Project>
